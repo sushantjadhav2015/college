@@ -1,0 +1,57 @@
+<ng-container *ngIf="cartProduct.length !=0">
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Sr. No</th>
+          <th>Product name</th>
+          <th>Product Iamge</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of cartProduct; let i=index">
+          <td>{{i+1}}</td>
+          <td style="width: 30%;">{{product.title}}</td>
+          <td><img style="width: 120px;" src="{{product.image}}" alt="product image"></td>
+          <td style="width: 12%;">${{product.price}}</td>
+          <td>
+            <div class="qty">
+              <!-- <button class="btn-minus" (click)="minus(product)"><i class="fa fa-minus"></i></button> -->
+              <input type="number" value="{{product.quantity}}" [(ngModel)]="product.quantity" (change)="updateQuantity(product, product.quantity)">
+            </div>
+          </td>
+          <td style="width: 12%;">${{product.total| number:'1.2-2'}}</td>
+
+          <td>
+            <button (click)="removeItem(product)" class="btn btn-danger"> Delete</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4"></td>
+          <td><button routerLink="/shopping" class="btn btn-primary">Shop More!</button></td>
+          <!-- <td><button (click)="removeItem(product)" class="btn btn-success">Pay</button></td> -->
+          <!-- <td>Total Amount : {{ totalAmount | currency: 'USD': 'symbol': '1.2-2' }}</td> -->
+          <!-- <td><button (click)="emptyCart()" class="btn btn-danger"> Remove all</button></td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="cartProduct.length==0">
+  <mat-card>
+    <span>
+      <img style="height: 400px;"
+        src="https://cdni.iconscout.com/illustration/premium/thumb/online-shopping-trolley-2748734-2289777.png"
+        alt="cart image">
+    </span>
+    <mat-card-content><strong style="font-size: 30px;">Your Cart is empty</strong></mat-card-content>
+    <button mat-flat-button color="warn" routerLink="/product"><strong>Shop Now !</strong></button>
+  </mat-card>
+</ng-container>

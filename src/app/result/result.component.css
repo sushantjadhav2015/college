@@ -1,0 +1,22 @@
+.table{
+    width: 600px;
+    margin-left: 100px;
+    margin-top: 200px;
+}
+
+table,
+td,
+th {
+    border: 1px solid rgb(128, 113, 113);
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+}
+
+.head{
+    background-color: aquamarine;
+    color: brown;
+    text-align: center;
+    padding: auto;
+    width: 500px;
+}

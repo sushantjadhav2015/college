@@ -1,0 +1,78 @@
+  <div class="row justify-content-center">
+
+    <!-- <div class="col-md-8">
+              <input type="text" class="search" placeholder="search here!!" [(ngModel)]="title" >
+            </div> -->
+    <div class="col-md-8">
+      <ul class="navbar-nav">
+        <li class="nav-item" *ngFor="let product of fashion">
+          <a [routerLink]="product.link">
+            <img [src]="product.url" class="sub-card-img" alt="">
+            <span class="nav-link"><strong>{{product.title}}</strong></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+  <!-- <div class="container">
+    <div class="row">
+      <ng-container *ngFor="let item of productList">
+            <div class="card col-md-3">
+              <img class="card-img-top" [src]="item.image" alt="Card image cap">
+              <h5 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;max-width: 25ch;">{{item.title}}
+              </h5>
+              <p><strong>Price :</strong>${{item.price}}</p>
+              <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 30ch;">
+                {{item.description}}</p>
+              <div class="card-body">
+                <button (click)="addToCart(item)" *ngIf="!item.cartClicked" class="addCard" mat-flat-button
+                  color="warn"> ADD TO
+                  CART
+                </button>
+                <button routerLink="/cart" *ngIf="item.cartClicked" class="goToCart" mat-flat-button color="warn"> GO TO
+                  CART
+                </button>
+                <button class="buy" mat-flat-button color="warn"><a routerLink="/fashion" class="card-link">BUY</a>
+                </button>
+              </div>
+        </div>
+      </ng-container>
+    </div>
+  </div> -->
+
+
+
+  <!-- TODO ...this code is created when you click on add to card the buttan goes to convert into input box to give quantity from user  -->
+  <div class="container">
+    <div class="row">
+      <ng-container *ngFor="let item of productList">
+        <div class="card col-md-3">
+          <img class="card-img-top" [src]="item.image" alt="Card image cap">
+          <h5 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;max-width: 25ch;">{{item.title}}
+          </h5>
+          <p><strong>Price :</strong>${{item.price}}</p>
+          <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 30ch;">
+            {{item.description}}</p>
+          <div class="card-body">
+            <ng-container *ngIf="!item.cartClicked">
+              <button (click)="addToCart(item)" class="addCard" mat-flat-button color="warn"> ADD TO CART</button>
+            </ng-container>
+            <ng-container *ngIf="item.cartClicked">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <button class="btn btn-outline-secondary" type="button" (click)="decrementQuantity(item)">-</button>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="item.quantity" min="1">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="incrementQuantity(item)">+</button>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>

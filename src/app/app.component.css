@@ -1,0 +1,10 @@
+
+  *{margin: 0;}
+  
+  nav{
+    background-color: rgb(5, 151, 144);
+  }
+  .nav-link{
+    color: rgb(224, 112, 19);
+    text-decoration: none;
+  }

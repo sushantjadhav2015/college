@@ -1,0 +1,16 @@
+mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+div.p {
+  font-family: "Alkatra", cursive;
+}
+
+.container {
+  margin: 20px auto;
+  width: 90%;
+}

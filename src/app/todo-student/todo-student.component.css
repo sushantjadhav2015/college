@@ -1,0 +1,29 @@
+mat-card {
+  position: relative;
+  justify-content: center;
+  height: 340px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+
+}
+
+th {
+  background-color: #01273d;
+  font-weight: bold;
+  text-align: center;
+  color:#ddd;
+}
+.formButton{
+  display: flex;
+  align-items: center;
+}

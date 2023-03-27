@@ -1,0 +1,17 @@
+<mat-toolbar class="toolbar">
+  <span id="title">Online Store</span>
+
+  <input type="text" class="search" placeholder="search here!!" #uname >
+
+  <span class="example-spacer"></span>
+ 
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="openDialog()">
+    <mat-icon>account_circle
+    </mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" matBadge="{{cartItem}}"   matBadgePosition="after" matBadgeColor="accent" routerLink="/cart">
+    <mat-icon> add_shopping_cart
+    </mat-icon>
+  </button>
+</mat-toolbar>
+

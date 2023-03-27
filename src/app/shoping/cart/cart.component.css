@@ -1,0 +1,55 @@
+mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+div.p{
+  font-family: 'Alkatra', cursive;;
+}
+
+.container {
+  margin: 20px auto;
+  width: 90%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+th {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+td.product-name {
+  word-break: break-all;
+  white-space: pre-wrap; 
+  text-align: left;
+}
+
+td img {
+  max-width: 120px;
+  height: auto;
+}
+
+input{
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  justify-content: center;
+}

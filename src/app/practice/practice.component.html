@@ -1,0 +1,13 @@
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="subMenu">sushant</button>
+  <button mat-menu-item>shital</button>
+</mat-menu>
+
+<button mat-flat-button [matMenuTriggerFor]="appMenu">Menu</button>
+
+<mat-menu #subMenu="matMenu">
+  <button mat-menu-item>Mechanical</button>
+  <button mat-menu-item>IT</button>
+  <button mat-menu-item>civil</button>
+</mat-menu>
+

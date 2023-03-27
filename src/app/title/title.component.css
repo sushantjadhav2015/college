@@ -1,0 +1,29 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* * {
+  margin: 0px;
+  padding: 0px;
+}
+
+.logo {
+  margin: 10px;
+  float: left;
+  max-width: 350px;
+}
+
+.logo-image {
+  float: left;
+  max-width: 50px;
+}
+.college-name {
+  margin-left: 140px;
+  margin-top: 10px;
+}
+
+#navbar {
+  background-color: rgb(29, 1, 1);
+  float: right;
+}
+ */

@@ -1,0 +1,114 @@
+<div class="container-fluid bg-dark text-light py-3">
+  <header class="text-center">
+    <h1 class="display-6">student registrasion</h1>
+  </header>
+</div>
+<section class="container my-1 bg-dark text-light w-50 p-4">
+  <form [formGroup]="myReactiveForm" (ngSubmit)="OnSubmit()" class="row g-3">
+    <div class="row g-3" formGroupName="userDetails">
+      <div class="form-group col-md-4">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name" />
+        <small
+          *ngIf="!myReactiveForm.get('userDetails.firstName').required && myReactiveForm.get('userDetails.firstName').touched">please
+          enter valid name</small>
+
+
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="middelName">Middel Name</label>
+        <input type="text" formControlName="middelName" class="form-control" id="middelName"
+          placeholder="Middel Name" />
+        <small
+          *ngIf="!myReactiveForm.get('userDetails.middelName').valid && myReactiveForm.get('userDetails.middelName').touched">Middel
+          name is requird</small>
+
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="lastName">Last Name</label>
+        <input type="lastName" formControlName="lastName" class="form-control" id="lastName" placeholder="Last Name" />
+        <small
+          *ngIf="!myReactiveForm.get('userDetails.lastName').valid && myReactiveForm.get('userDetails.lastName').touched">last
+          name is requird</small>
+
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="address">Address</label>
+      <input type="text" formControlName="address" class="form-control" id="address" placeholder="1234 Main St" />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="text" formControlName="email" class="form-control" id="email" placeholder="abc@gmail.com" />
+      <small class="text-danger"
+        *ngIf="myReactiveForm.get('email').hasError('email') && !myReactiveForm.get('email').hasError('required')">
+        Please enter a valid email address</small>
+      <small *ngIf="!myReactiveForm.get('email').hasError('valid') && myReactiveForm.get('email').touched">
+        Email is <strong>required</strong></small>
+    </div>
+
+
+    <div class="row g-2" formGroupName="userDetails2">
+      <div class="form-group col-md-7 py-3">
+        <label for="city">City</label>
+        <input formControlName="city" type="text" class="form-control" id="city" />
+      </div>
+      <div class="form-group col-md-5 py-3">
+        <label for="State">State</label>
+        <select formControlName="state" id="State" class="form-control">
+          <option selected>Select state</option>
+          <option>MAHARASHATRA</option>
+          <option>KARNATAKA</option>
+          <option>KERLA</option>
+          <option>GUJRAT</option>
+          <option>BIHAR</option>
+          <option>TELANGANA</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- <div class="form-group col-md-12 py-3">
+      <label for="country">Country</label>
+      <select class="custom-select" (change)="onCountrySelect($event)">
+        <option>select country</option>
+        <option value="{{c.id}}" *ngFor="let c of countries">{{c.name}}</option>
+      </select>
+
+      <label for="state">state</label>
+      <select class="custom-select" (change)="onStateSelect($event)">
+        <option>select state</option>
+        <option value="{{s.id}}" *ngFor="let s of newstates">{{s.name}}</option>
+      </select>
+
+      <label for="dist">City</label>
+      <select class="custom-select">
+        <option>select city</option>
+        <option value="{{d.id}}" *ngFor="let d of newDist">{{d.name}}</option>
+      </select>
+    </div> -->
+
+    <div class="form-group col-md-2">
+      <label for="age">AGE</label>
+      <input formControlName="age" type="number" pattern="(?:1[7-9]|20)" class="form-control" id="inputZip" />
+    </div>
+
+    <div formArrayName="hobbies">
+      <h4>Hobbies</h4>
+      <button class="btn btn-success" type="button" (click)="onAddHobby()">Add Hobby</button>
+
+      <div class="form-group" *ngFor="let hobbyControl of myReactiveForm.get('hobbies').controls; let i=index">
+        <input type="text" class="form-control" [formControlName]="i">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" />
+        <label class="form-check-label" for="gridCheck"> Check me out </label>
+      </div>
+    </div>
+  </form>
+
+</section>

@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>All Forms</span>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu" >All Forms</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openDialog()"><a routerLinkActive="active" routerLink="/registration" class="nav-link">Student Registration</a></button>
+      <button mat-menu-item><a routerLinkActive="active" routerLink="/registration" class="nav-link">Exam form</a></button>
+    </mat-menu>
+  </mat-toolbar>
+
+
+
+

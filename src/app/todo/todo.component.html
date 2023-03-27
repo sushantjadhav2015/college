@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-offset-1 col-md-5">
+    <div class="panel panel-primary">
+      <div class="pannel-heading"><strong>Form</strong></div>
+      <div class="panel-body">
+        <form [formGroup]="brandForm">
+          <div class="form-group" [ngClass]="{'has-error':isSubmitted && _fc.name.errors}" >
+            <label>Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+            <span *ngIf="isSubmitted && _fc.name.errors" class="help-block">Name is Required</span>
+
+            <button type="button" class="btn btn-success" (click)="save()">Submit</button>
+            <button type="button" class="btn btn-danger" (click)="reset()">Reset</button>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- [ngClass]="{'has-error':isSubmitted && _fc.name.errors}" -->

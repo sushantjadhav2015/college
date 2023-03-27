@@ -1,0 +1,31 @@
+{
+  "shopping": [],
+  "students": [
+    {
+      "id": 1,
+      "name": "sdgsfg",
+      "course": "React",
+      "about": "sgfasg"
+    },
+    {
+      "id": 2,
+      "name": "gfsags",
+      "course": "React",
+      "about": "sgfgs\n"
+    }
+  ],
+  "users": [
+    {
+      "email": "sushant@gmail.com",
+      "password": "123456",
+      "mobile": "9096046516",
+      "id": 1
+    },
+    {
+      "email": "sushant12@gmail.com",
+      "password": "123466",
+      "mobile": "9096046516",
+      "id": 2
+    }
+  ]
+}

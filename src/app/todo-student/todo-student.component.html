@@ -1,0 +1,66 @@
+<h3>Student resistration form</h3>
+
+<mat-grid-list cols="2" rowHeight="450px">
+  <mat-grid-tile>
+    <mat-card class="col-6 rounded shadow">
+      <form [formGroup]="studentResForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field class="col-12" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+          <mat-error *ngIf="studentResForm.get('name').hasError('required')">name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-12" appearance="fill">
+          <mat-label>Course</mat-label>
+          <mat-select formControlName="course">
+            <mat-option value=""></mat-option>
+            <mat-option value="Angular">Angular</mat-option>
+            <mat-option value="React">React</mat-option>
+            <mat-option value="TypeScript">TypeScript</mat-option>
+          </mat-select>
+          <mat-error *ngIf="studentResForm.get('course').hasError('required')">select course</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-12" appearance="fill">
+          <mat-label>About you</mat-label>
+          <textarea formControlName="about" matInput></textarea>
+        </mat-form-field>
+
+        <div class="formButtan">
+          <button mat-flat-button color="accent" [disabled]="!studentResForm.valid">Submit</button>
+          <button mat-flat-button type="reset" (click)="onReset()" color="warn">Reset</button>
+        </div>
+      </form>
+    </mat-card>
+  </mat-grid-tile>
+
+
+  <mat-grid-tile>
+    <div class="container col-12">
+      <table class="table table-striped">
+        <thead>
+          <th>ID</th>
+          <th>name</th>
+          <th>Course</th>
+          <th>About me</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of arrayOfData">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.course}}</td>
+            <td>{{item.about}}</td>
+            <td><button type="button" class="btn btn-success"  (click)="editData()">Edit</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="deleteData(item.id)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </mat-grid-tile>
+
+
+</mat-grid-list>

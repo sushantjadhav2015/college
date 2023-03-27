@@ -1,0 +1,61 @@
+<div class="login-container">
+  <mat-card class="example-card col-12">
+    <form [formGroup]="loginForm" (ngSubmit)="created()">
+
+      <mat-card-header>
+        <mat-card-title><strong>Create new Account</strong></mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="example-container">
+          <mat-form-field>
+            <mat-label>Enter your email</mat-label>
+            <input style="font-size: 16px;" formControlName="email" matInput placeholder="pat@example.com">
+            <mat-error *ngIf="loginForm.get('email').invalid &&  loginForm.get('email').touched">
+              <span *ngIf="loginForm.get('email').errors.required">Email is required.</span>
+              <span *ngIf="loginForm.get('email').errors.email">Email must be a valid email address</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <mat-hint style="color: rgb(250, 6, 6); font-size: 16px;" *ngIf="errorMessage">{{ errorMessage }}</mat-hint>
+      </mat-card-content>
+
+      <mat-card-content>
+        <div class="example-container">
+          <mat-form-field>
+            <mat-label>Mobile Number</mat-label>
+            <input style="font-size: 16px;" formControlName="mobile" matInput>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+
+      <mat-card-content>
+        <mat-form-field>
+          <mat-label>Enter your password</mat-label>
+          <input style="font-size: 16px;" formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="loginForm.get('password').invalid &&  loginForm.get('password').touched">
+            <span *ngIf="loginForm.get('password').errors.required">password is required.</span>
+          </mat-error>
+
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button class="submitButton" mat-flat-button color="warn" type="submit" [disabled]="loginForm.invalid"
+          (click)="onSubmit()">Create</button>
+        <button class="resetButton" mat-flat-button color="success" type="reset" (click)="onReset()">Reset</button>
+      </mat-card-actions>
+      <mat-card-content class="bottum">
+        <div>
+          <a routerLink="/login">Login page</a> <span id="line">|</span>
+          <a routerLink="">Forget password ?</a>
+        </div>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

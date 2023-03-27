@@ -1,0 +1,13 @@
+
+mat-card{
+    border: 1px;
+    border-radius: 10px;
+    width: 350px;
+    height: 450px;
+    box-shadow: 0,0,0,0.5;
+    flex: 1 1 auto;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
