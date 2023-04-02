@@ -3,15 +3,27 @@
   "students": [
     {
       "id": 1,
-      "name": "sdgsfg",
+      "name": "sushant jadhav",
       "course": "React",
-      "about": "sgfasg"
+      "about": "angular"
     },
     {
       "id": 2,
-      "name": "gfsags",
-      "course": "React",
-      "about": "sgfgs\n"
+      "name": "sushant jadhav",
+      "course": "Angular",
+      "about": "angular"
+    },
+    {
+      "id": 3,
+      "name": "sushant jadhav",
+      "course": "Angular",
+      "about": "angular angular"
+    },
+    {
+      "id": 4,
+      "name": "sushant",
+      "course": "TypeScript",
+      "about": "angular"
     }
   ],
   "users": [

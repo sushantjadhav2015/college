@@ -28,7 +28,8 @@
         </mat-form-field>
 
         <div class="formButtan">
-          <button mat-flat-button color="accent" [disabled]="!studentResForm.valid">Submit</button>
+          <button mat-flat-button color="accent"
+            [disabled]="!studentResForm.valid">{{!studentResForm.get('id').value? 'Create':'Update'}}</button>
           <button mat-flat-button type="reset" (click)="onReset()" color="warn">Reset</button>
         </div>
       </form>
@@ -53,7 +54,7 @@
             <td>{{item.name}}</td>
             <td>{{item.course}}</td>
             <td>{{item.about}}</td>
-            <td><button type="button" class="btn btn-success"  (click)="editData()">Edit</button></td>
+            <td><button type="button" class="btn btn-success" (click)="editData(item.id)">Edit</button></td>
             <td><button type="button" class="btn btn-danger" (click)="deleteData(item.id)">Delete</button></td>
           </tr>
         </tbody>

@@ -1,3 +1,5 @@
+import { HttpClient } from "@angular/common/http";
+import { identifierModuleUrl } from "@angular/compiler";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -9,10 +11,13 @@ import { TodoStudentService } from "../service/todo-student.service";
   styleUrls: ["./todo-student.component.css"],
 })
 export class TodoStudentComponent implements OnInit {
-  arrayOfData:any=[];
+  arrayOfData: any = [];
+
+  url = "http://localhost:3000/students/";
 
   public studentResForm: FormGroup | any;
   isSubmitted = false;
+  id: any;
 
   constructor(
     private fb: FormBuilder,
@@ -34,17 +39,27 @@ export class TodoStudentComponent implements OnInit {
 
   onSubmit() {
     this.isSubmitted = true;
-    if (this.studentResForm.valid) {
-      this.todoSrvice.create(this.studentResForm.value).subscribe({
-        next: (res) => {
-          alert("student data added successfully");
+    if (this.studentResForm.invalid) {
+      return;
+    } else {
+      let id = this.studentResForm.controls.id.value;
+      if (!id) {
+        this.todoSrvice.create(this.studentResForm.value).subscribe({
+          next: (res) => {
+            alert("student data added successfully");
+            this.onReset();
+          },
+          error: () => {
+            alert("student data not added");
+            this.onReset();
+          },
+        });
+      } else {
+        this.todoSrvice.update(this.studentResForm.value).subscribe((res) => {
+          alert("data updated successfully");
           this.onReset();
-        },
-        error: () => {
-          alert("student data not added");
-          this.onReset();
-        },
-      });
+        });
+      }
     }
   }
 
@@ -54,30 +69,28 @@ export class TodoStudentComponent implements OnInit {
   }
 
   getAllData() {
-        this.todoSrvice.getFromServer().subscribe({
-          next: (res) => {
-            console.log("data fetching from server", res);
-            this.arrayOfData = res;
-          },
-          error: (err) => {
-            alert("error while fetching data");
-          },
-        });
+    this.todoSrvice.getFromServer().subscribe({
+      next: (res) => {
+        console.log("data fetching from server", res);
+        this.arrayOfData = res;
+      },
+      error: (err) => {
+        alert("error while fetching data");
+      },
+    });
   }
+
 
   editData(id: any) {
     if (id) {
       const brand = this.arrayOfData.find((x) => x.id === id);
-      console.log(brand);
 
       if (!brand) return;
-      brand.isReading = true;
 
-      this.todoSrvice.getFromServer().subscribe((result) => {
+      this.todoSrvice.edit(id).subscribe((result) => {
         Object.keys(this.studentResForm.controls).forEach((key) => {
           this.studentResForm.controls[key].setValue(result[key]);
         });
-        brand.isReading = false;
         alert("Edit data loaded successfully");
       });
     }
@@ -86,7 +99,7 @@ export class TodoStudentComponent implements OnInit {
   deleteData(id) {
     var result = confirm("want to delete");
     if (id && result) {
-      const brand = this.arrayOfData.find((x) => x.id === id);
+      const brand = this.arrayOfData.map((x) => x.id === id);
 
       if (!brand) return;
       brand.isDeleting = true;
@@ -100,8 +113,6 @@ export class TodoStudentComponent implements OnInit {
     }
   }
 }
-
-
 
 //   // if(this.studentResForm.invalid){
 //   //   return;
